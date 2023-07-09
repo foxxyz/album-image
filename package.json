@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node index.mjs",
     "lint": "eslint . --ext .mjs",
+    "test-ci": "node --test",
     "test": "node --test --experimental-test-coverage"
   },
   "author": "Ivo Janssen <hello@ivo.la>",
