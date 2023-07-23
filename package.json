@@ -6,9 +6,9 @@
     "type": "git",
     "url": "https://github.com/foxxyz/album-image"
   },
-  "bin": "./index.mjs",
+  "bin": "./cli.mjs",
   "scripts": {
-    "start": "node index.mjs",
+    "start": "node cli.mjs",
     "lint": "eslint . --ext .mjs",
     "test-ci": "node --test",
     "test": "node --test --experimental-test-coverage"
