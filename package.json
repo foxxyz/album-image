@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/foxxyz/album-image"
   },
+  "bin": "./index.mjs",
   "scripts": {
     "start": "node index.mjs",
     "lint": "eslint . --ext .mjs",
@@ -20,8 +21,7 @@
     "eslint": "^8.43.0"
   },
   "dependencies": {
-    "argparse": "^2.0.1",
-    "fresh-console": "^1.0.4"
+    "argparse": "^2.0.1"
   },
   "eslintConfig": {
     "extends": "@appliedminds"
