@@ -1,12 +1,12 @@
 {
   "name": "album-image",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "Retrieve album cover art",
   "repository": {
     "type": "git",
     "url": "https://github.com/foxxyz/album-image"
   },
-  "bin": "./index.mjs",
+  "bin": "./index.js",
   "scripts": {
     "start": "node index.mjs",
     "lint": "eslint . --ext .mjs",
@@ -14,7 +14,6 @@
     "test": "node --test --experimental-test-coverage"
   },
   "author": "Ivo Janssen <hello@ivo.la>",
-  "bin": "./index.js",
   "license": "MIT",
   "devDependencies": {
     "@appliedminds/eslint-config": "^1.5.0",
