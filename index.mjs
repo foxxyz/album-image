@@ -34,7 +34,7 @@ export async function getAlbumImage({ albumName, artist }) {
     }
 
     if (!releases.length) {
-        throw new Error('No release found!')
+        throw new Error('No matching release found!')
     }
 
     for (const release of releases) {
@@ -60,6 +60,6 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         })
         process.stdout.write(result)
     } catch (e) {
-        console.error(e)
+        console.error(e.message)
     }
 }
