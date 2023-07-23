@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/foxxyz/album-image"
   },
+  "main": "index.mjs",
   "bin": "./cli.mjs",
   "scripts": {
     "start": "node cli.mjs",
