@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/foxxyz/album-image"
   },
-  "bin": "./index.js",
+  "bin": "./index.mjs",
   "scripts": {
     "start": "node index.mjs",
     "lint": "eslint . --ext .mjs",
