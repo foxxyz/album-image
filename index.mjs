@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import { ArgumentParser } from 'argparse'
-import 'fresh-console'
 import { readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 
@@ -48,16 +47,18 @@ export async function getAlbumImage({ albumName, artist }) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const packageInfo = JSON.parse(readFileSync('./package.json'))
+    // eslint-disable-next-line camelcase
     const parser = new ArgumentParser({ add_help: true, description: packageInfo.description })
     parser.add_argument('-v', '--version', { action: 'version', version: packageInfo.version })
-    parser.add_argument('--artist', { help: 'Artist name' })
+    parser.add_argument('artistName', { nargs: '?', help: 'Artist name' })
     parser.add_argument('albumName', { help: 'Album name' })
     const args = parser.parse_args()
     try {
-        console.log(await getAlbumImage({
+        const result = await getAlbumImage({
             albumName: args.albumName,
             artist: args.artist,
-        }))
+        })
+        process.stdout.write(result)
     } catch (e) {
         console.error(e)
     }
