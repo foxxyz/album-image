@@ -109,8 +109,8 @@ describe('Direct Image Retrieval', () => {
     })
 })
 describe('Fuzzy Image Retrieval', () => {
-    it('should error if no releases found', () => {
+    it('should error if no releases found', async() => {
         mock.fn(getRelease, () => [])
-        assert.rejects(getAlbumImage({ album: 'nthontdontd' }), /no matching release found/i)
+        await assert.rejects(getAlbumImage({ album: 'nthontdontd' }), /no matching release found/i)
     })
 })
