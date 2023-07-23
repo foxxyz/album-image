@@ -35,14 +35,14 @@ npm install album-image
 
 ```js
 import { getAlbumImage } from 'album-image'
-const url = await getAlbumImage({ albumName: 'drukqs' })
+const url = await getAlbumImage({ album: 'drukqs' })
 ```
 
 #### By artist and album name
 
 ```js
 import { getAlbumImage } from 'album-image'
-const url = await getAlbumImage({ artistName: 'Prodigy', albumName: 'the fat of the land' })
+const url = await getAlbumImage({ artist: 'Prodigy', album: 'the fat of the land' })
 ```
 
 License

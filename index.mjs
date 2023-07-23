@@ -3,9 +3,9 @@ import { ArgumentParser } from 'argparse'
 import { readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 
-export async function getRelease({ albumName, artist }) {
+export async function getRelease({ album, artist }) {
     // Find correct release
-    let query = `release:${albumName}`
+    let query = `release:${album}`
     if (artist) query = `${query} AND artist:${artist}`
     const params = new URLSearchParams({ fmt: 'json', query })
     const response = await fetch(`https://musicbrainz.org/ws/2/release-group/?${params.toString()}`)
@@ -24,13 +24,13 @@ export async function getImage({ id }) {
     return image.image
 }
 
-export async function getAlbumImage({ albumName, artist }) {
+export async function getAlbumImage({ album, artist }) {
     let releases = []
     if (artist) {
-        releases = await getRelease({ albumName, artist })
+        releases = await getRelease({ album, artist })
     }
     if (!releases.length) {
-        releases = await getRelease({ albumName })
+        releases = await getRelease({ album })
     }
 
     if (!releases.length) {
@@ -50,12 +50,12 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     // eslint-disable-next-line camelcase
     const parser = new ArgumentParser({ add_help: true, description: packageInfo.description })
     parser.add_argument('-v', '--version', { action: 'version', version: packageInfo.version })
-    parser.add_argument('artistName', { nargs: '?', help: 'Artist name' })
-    parser.add_argument('albumName', { help: 'Album name' })
+    parser.add_argument('artist', { nargs: '?', help: 'Artist name' })
+    parser.add_argument('album', { help: 'Album name' })
     const args = parser.parse_args()
     try {
         const result = await getAlbumImage({
-            albumName: args.albumName,
+            album: args.album,
             artist: args.artist,
         })
         process.stdout.write(result)
