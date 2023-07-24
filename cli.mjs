@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 import { ArgumentParser } from 'argparse'
 import { readFileSync } from 'fs'
+import { join } from 'path'
 import { getAlbumImage } from './index.mjs'
+import { fileURLToPath } from 'url'
 
-const packageInfo = JSON.parse(readFileSync('./package.json'))
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
+const packageInfo = JSON.parse(readFileSync(join(__dirname, 'package.json')))
 // eslint-disable-next-line camelcase
 const parser = new ArgumentParser({ add_help: true, description: packageInfo.description })
 parser.add_argument('-v', '--version', { action: 'version', version: packageInfo.version })
