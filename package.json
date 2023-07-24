@@ -1,6 +1,6 @@
 {
   "name": "album-image",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Retrieve album cover art",
   "repository": {
     "type": "git",
