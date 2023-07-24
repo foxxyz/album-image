@@ -17,8 +17,8 @@
   "author": "Ivo Janssen <hello@ivo.la>",
   "license": "MIT",
   "devDependencies": {
-    "@appliedminds/eslint-config": "^1.5.0",
-    "eslint": "^8.43.0"
+    "@appliedminds/eslint-config": "^1.5.1",
+    "eslint": "^8.45.0"
   },
   "dependencies": {
     "argparse": "^2.0.1"
