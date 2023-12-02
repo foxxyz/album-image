@@ -1,9 +1,18 @@
+import { readFileSync } from 'fs'
+import { join } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
+const packageInfo = JSON.parse(readFileSync(join(__dirname, 'package.json')))
+
 export async function getRelease({ album, artist }) {
     // Find correct release
     let query = `release:${album}`
     if (artist) query = `${query} AND artist:${artist}`
     const params = new URLSearchParams({ fmt: 'json', query })
-    const response = await fetch(`https://musicbrainz.org/ws/2/release-group/?${params.toString()}`)
+    const response = await fetch(`https://musicbrainz.org/ws/2/release-group/?${params.toString()}`, {
+        headers: { 'User-Agent': `album-image/${packageInfo.version} ( https://github.com/foxxyz/album-image )` }
+    })
     const contents = await response.json()
     const { 'release-groups': releases } = contents
     return releases
