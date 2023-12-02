@@ -4,10 +4,12 @@
   "description": "Retrieve album cover art",
   "repository": {
     "type": "git",
-    "url": "https://github.com/foxxyz/album-image"
+    "url": "git+https://github.com/foxxyz/album-image.git"
   },
   "main": "index.mjs",
-  "bin": "./cli.mjs",
+  "bin": {
+    "album-image": "cli.mjs"
+  },
   "scripts": {
     "start": "node cli.mjs",
     "lint": "eslint . --ext .mjs",
