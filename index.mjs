@@ -1,9 +1,4 @@
-import { readFileSync } from 'fs'
-import { join } from 'path'
-import { fileURLToPath } from 'url'
-
-const __dirname = fileURLToPath(new URL('.', import.meta.url))
-const packageInfo = JSON.parse(readFileSync(join(__dirname, 'package.json')))
+import packageInfo from './package.json' with { type: 'json' }
 
 export async function getRelease({ album, artist }) {
     // Find correct release
