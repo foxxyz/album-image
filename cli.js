@@ -2,7 +2,7 @@
 import { ArgumentParser } from 'argparse'
 import { readFileSync } from 'fs'
 import { join } from 'path'
-import { getAlbumImage } from './index.mjs'
+import { getAlbumImage } from './index.js'
 import { fileURLToPath } from 'url'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))

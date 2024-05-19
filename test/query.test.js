@@ -1,7 +1,7 @@
 import assert from 'node:assert'
 import { afterEach, describe, it, mock } from 'node:test'
 
-import { getAlbumImage, getImage, getRelease } from '../index.mjs'
+import { getAlbumImage, getImage, getRelease } from '../index.js'
 
 afterEach(() => {
     mock.restoreAll()

@@ -6,26 +6,24 @@
     "type": "git",
     "url": "git+https://github.com/foxxyz/album-image.git"
   },
-  "main": "index.mjs",
+  "main": "index.js",
   "bin": {
-    "album-image": "cli.mjs"
+    "album-image": "cli.js"
   },
   "scripts": {
-    "start": "node cli.mjs",
-    "lint": "eslint . --ext .mjs",
+    "start": "node cli.js",
+    "lint": "eslint",
     "test-ci": "node --test",
     "test": "node --test --experimental-test-coverage"
   },
+  "type": "module",
   "author": "Ivo Janssen <hello@ivo.la>",
   "license": "MIT",
   "devDependencies": {
-    "@appliedminds/eslint-config": "^1.6.0",
-    "eslint": "^8.55.0"
+    "@appliedminds/eslint-config": "^2.0.1",
+    "eslint": "^9.3.0"
   },
   "dependencies": {
     "argparse": "^2.0.1"
-  },
-  "eslintConfig": {
-    "extends": "@appliedminds"
   }
 }
