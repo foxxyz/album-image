@@ -75,6 +75,12 @@ describe('Release Group Retrieval', () => {
         const releases = await getRelease({ album: 'Dreamer' })
         assert.equal(releases[0].id, 'c12d5b50-e1af-4646-92d3-70b1caff84ba')
     })
+    it('should reject when aborted', async() => {
+        const ab = new AbortController()
+        ab.abort()
+        const promise = getRelease({ album: 'Dreamer', signal: ab.signal })
+        await assert.rejects(promise, /aborted/)
+    })
 })
 describe('Direct Image Retrieval', () => {
     it('can look up an image using a release ID', async() => {
@@ -107,6 +113,12 @@ describe('Direct Image Retrieval', () => {
         const image = await getImage({ id: '1c31d68c-aaaa-3aff-8961-2d27d452ba' })
         assert.equal(image, 'http://coverartarchive.org/release/1c31d79c-aaaa-ffff/34028124493.jpg')
     })
+    it('should reject when aborted', async() => {
+        const ab = new AbortController()
+        ab.abort()
+        const promise = getImage({ id: 'c8f74705-2545-48d2-b0c8-7c899f595b20', signal: ab.signal })
+        await assert.rejects(promise, /aborted/)
+    })
 })
 describe('Fuzzy Image Retrieval', () => {
     it('should error if no releases found', async() => {
@@ -115,5 +127,11 @@ describe('Fuzzy Image Retrieval', () => {
             return { json: () => ({ 'release-groups': [] }), status: 200 }
         })
         await assert.rejects(getAlbumImage({ album: 'nthontdontd' }), /no matching release found/i)
+    })
+    it('should reject when aborted', async() => {
+        const ab = new AbortController()
+        ab.abort()
+        const promise = getAlbumImage({ artist: 'Green Day', album: 'Dookie', signal: ab.signal })
+        await assert.rejects(promise, /aborted/)
     })
 })
