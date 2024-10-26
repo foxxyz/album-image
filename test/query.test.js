@@ -110,7 +110,10 @@ describe('Direct Image Retrieval', () => {
 })
 describe('Fuzzy Image Retrieval', () => {
     it('should error if no releases found', async() => {
-        mock.fn(getRelease, () => [])
+        mock.method(global, 'fetch', url => {
+            if (!url.includes('https://musicbrainz.org/ws/2/release-group/?fmt=json&query=release%3Anthontdontd')) return {}
+            return { json: () => ({ 'release-groups': [] }), status: 200 }
+        })
         await assert.rejects(getAlbumImage({ album: 'nthontdontd' }), /no matching release found/i)
     })
 })
